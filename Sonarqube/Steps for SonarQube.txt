@@ -1,0 +1,7 @@
+1. Login to Jenkins
+2. Open sonarqube folder and then open conf folder and open wrapper file
+then copy the path of jdk 17 uptill bin and then paste it in the
+wrapper.java.command=C:/Program Files/Java/jdk-17.0.4.1/bin/java
+add /java after the path
+3. Open bin\windows-x86-64 in that click on startSonar. A command prompt will open which shows that your server is started
+4. Then search localhost:9000 and login with default name and password as admin. Change the password to admin123
