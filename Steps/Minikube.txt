@@ -1,0 +1,39 @@
+#make folder in Drive C with name minikube
+
+cd minikube
+
+#Create a minikube.exe file 
+
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+
+#Add to Env Variables (open powershell in Run as administrator)
+
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
+}
+
+
+#Open Virtual Box (then run all this command in Powershell as run as administrator)
+
+minikube start --driver=virtualbox
+
+minikube config set driver virtualbox
+
+minkube status
+
+kubectl get nodes
+
+kubectl get po -A
+
+kubectl get pods
+
+kubectl create deployment hello-minikube --image=docker.io/nginx:1.23
+kubectl expose deployment hello-minikube --type=NodePort --port=80
+
+kubectl get services hello-minikube
+
+minikube service hello-minikube --url
+
+

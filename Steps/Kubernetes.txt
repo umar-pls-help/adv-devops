@@ -1,0 +1,10 @@
+-----------------> Kubectl
+
+curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
+
+
+If there is error, use this
+curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe" --ssl-no-revoke
+
+
+put --ssl-no-revoke if there is "The revocation function was unable to check revocation for the certificate" error
